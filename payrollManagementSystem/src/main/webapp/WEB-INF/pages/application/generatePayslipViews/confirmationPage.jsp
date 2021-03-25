@@ -133,36 +133,7 @@
 <table style="width:85%;">
 	<tr>
 		<td style="text-align:right">
-			<taglib:form modelAttribute="paySlip" action="generationCompletionPage">
-				<taglib:hidden path="employeeId" value="${paySlip.employeeId}"/>
-				<taglib:hidden path="employeeName" value="${paySlip.employeeName}"/>
-				<taglib:hidden path="department" value="${paySlip.department}"/>
-				<taglib:hidden path="designation" value="${paySlip.designation}"/>
-				<taglib:hidden path="dateOfBirth" value="${paySlip.dateOfBirth}"/>
-				<taglib:hidden path="dateOfJoining" value="${paySlip.dateOfJoining}"/>
-				<taglib:hidden path="gender" value="${paySlip.gender}"/>
-				<taglib:hidden path="bankAccNum" value="${paySlip.bankAccNum}"/>
-				<taglib:hidden path="phoneNum" value="${paySlip.phoneNum}"/>
-				<taglib:hidden path="emailId" value="${paySlip.emailId}"/>
-		
-				<taglib:hidden path="basicSalary" value="${paySlip.basicSalary}"/>
-				<taglib:hidden path="specialAllowance" value="${paySlip.specialAllowance}"/>
-				<taglib:hidden path="HRA" value="${paySlip.HRA}"/>
-				<taglib:hidden path="LTA" value="${paySlip.LTA}"/>
-				<taglib:hidden path="foodCoupon" value="${paySlip.foodCoupon}"/>
-				<taglib:hidden path="providentFund" value="${paySlip.providentFund}"/>
-				<taglib:hidden path="professionalTax" value="${paySlip.professionalTax}"/>
-				<taglib:hidden path="deductionsDueToLOP" value="${paySlip.deductionsDueToLOP}"/>
-				<taglib:hidden path="totalEarnings" value="${paySlip.totalEarnings}"/>
-				<taglib:hidden path="totalDeductions" value="${paySlip.totalDeductions}"/>
-				<taglib:hidden path="netPay" value="${paySlip.netPay}"/>
-		
-				<taglib:hidden path="month" value="${paySlip.month}"/>
-				<taglib:hidden path="year" value="${paySlip.year}"/>
-				<taglib:hidden path="numOfDaysInGivenMonth" value="${paySlip.numOfDaysInGivenMonth}"/>
-				<taglib:hidden path="LOPDays" value="${paySlip.LOPDays}"/>
-				<taglib:hidden path="netDaysWorked" value="${paySlip.netDaysWorked}"/>
-		
+			<taglib:form action="generationCompletionPage">
 				<input type="submit" value="Confirm">
 			</taglib:form>
 		</td>
