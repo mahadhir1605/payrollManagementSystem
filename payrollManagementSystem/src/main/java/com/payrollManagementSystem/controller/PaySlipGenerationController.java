@@ -19,6 +19,7 @@ import com.payrollManagementSystem.entity.PaySlipEntity;
 import com.payrollManagementSystem.exceptions.DuplicateRecordException;
 import com.payrollManagementSystem.exceptions.EmployeeNotFoundException;
 import com.payrollManagementSystem.exceptions.NoAttendanceException;
+import com.payrollManagementSystem.service.EmployeeService;
 import com.payrollManagementSystem.service.PaySlipService;
 
 @Controller
@@ -27,6 +28,10 @@ public class PaySlipGenerationController {
 	@Autowired
 	PaySlipService paySlipService;
 
+	@Autowired
+	EmployeeService employeeService;
+	
+	
 	@RequestMapping(value = "/getDetails")
 	public ModelAndView getInfo(@CookieValue(name = "userId", defaultValue = "0") int userId,
 			HttpServletResponse response) {
@@ -40,6 +45,7 @@ public class PaySlipGenerationController {
 			modelAndView.setViewName("statusPage");
 			return modelAndView;
 		}
+		modelAndView.addObject("employee", employeeService.getEmployee(userId));
 		modelAndView.addObject("dataTransferEntity", new DataTransferEntity());
 		modelAndView.addObject("months", Month.values());
 		modelAndView.setViewName("application/generatePayslipViews/infoGatheringPage");
@@ -65,6 +71,7 @@ public class PaySlipGenerationController {
 			// System.out.println(result);
 			modelAndView.addObject("dataTransferEntity", dataTransferEntity);
 			modelAndView.addObject("months", Month.values());
+			modelAndView.addObject("employee", employeeService.getEmployee(userId));
 			modelAndView.setViewName("application/generatePayslipViews/infoGatheringPage");
 			return modelAndView;
 		}
@@ -73,6 +80,7 @@ public class PaySlipGenerationController {
 				dataTransferEntity.getMonth(), dataTransferEntity.getYear());
 		modelAndView.addObject("paySlip", paySlip);
 		modelAndView.addObject("paySlip2", new PaySlipEntity());
+		modelAndView.addObject("employee", employeeService.getEmployee(userId));
 		modelAndView.setViewName("application/generatePayslipViews/confirmationPage");
 		return modelAndView;
 	}
@@ -92,6 +100,7 @@ public class PaySlipGenerationController {
 		}
 		paySlipService.generatePaySlip(paySlip2);
 		modelAndView.addObject("completionMsg", "PaySlip is generated.");
+		modelAndView.addObject("employee", employeeService.getEmployee(userId));
 		modelAndView.setViewName("application/generatePayslipViews/completionPage");
 		return modelAndView;
 	}
@@ -100,7 +109,6 @@ public class PaySlipGenerationController {
 	public ModelAndView employeeExceptionHandling(EmployeeNotFoundException e) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("EmployeeErrorMsg", e.getMessage());
-
 		modelAndView.addObject("dataTransferEntity", new DataTransferEntity());
 		modelAndView.addObject("months", Month.values());
 		modelAndView.setViewName("application/generatePayslipViews/infoGatheringPage");

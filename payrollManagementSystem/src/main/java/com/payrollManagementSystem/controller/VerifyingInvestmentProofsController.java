@@ -265,10 +265,11 @@ public class VerifyingInvestmentProofsController {
 	}
 	
 	@ExceptionHandler({DuplicateApprovalException.class, NoRecordFoundException.class, RejectedRecordException.class})
-	public ModelAndView exceptionHandling(Exception e)
+	public ModelAndView exceptionHandling(@CookieValue(name = "userId", defaultValue = "0") long userId ,Exception e)
 	{	e.printStackTrace();
 		String[] financialYears= {"2020-21", "2021-22", "2022-23", "2023-24", "2024-25"};
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("employee", employeeService.getEmployee(userId));
 		modelAndView.addObject("financialYears", financialYears);
 		modelAndView.addObject("verificationDetailsEntity", new VerificationDetailsEntity());
 		modelAndView.addObject("ExceptionMsg", e.getMessage());
@@ -277,12 +278,13 @@ public class VerifyingInvestmentProofsController {
 	}
 	
 	@ExceptionHandler(IOException.class)
-	public ModelAndView IOExceptionHandling(IOException e)
+	public ModelAndView IOExceptionHandling(@CookieValue(name = "userId", defaultValue = "0") long userId, IOException e)
 	{	e.printStackTrace();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("ErrorMsg", "We have encountered an error in "
 				+ "getting the files. Please try again after some time.");
 		modelAndView.setViewName("application/investmentProofViews/IOExceptionPage");
+		modelAndView.addObject("employee", employeeService.getEmployee(userId));
 		return modelAndView;
 	}
 	

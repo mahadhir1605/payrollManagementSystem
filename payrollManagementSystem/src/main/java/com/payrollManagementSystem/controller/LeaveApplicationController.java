@@ -105,6 +105,7 @@ public class LeaveApplicationController {
 			modelAndView.setViewName("application/leaveApplicationViews/leaveApplicationForm");
 			return modelAndView;
 		}
+		System.err.println(list);
 		modelAndView.addObject("listOfLeaveData", list);
 		modelAndView.setViewName("application/leaveApplicationViews/searchResultOfLeaveData");
 		modelAndView.addObject("employee", employeeService.getEmployee(userId));
@@ -112,7 +113,7 @@ public class LeaveApplicationController {
 	}
 
 	@ExceptionHandler({ EarnedLeavesException.class, SickLeavesException.class, EmergencyLeavesException.class })
-	public ModelAndView exceptionHandling(Exception e) {
+	public ModelAndView exceptionHandling( Exception e) {
 		// System.out.println(leaveData);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("errorMsg", e.getMessage());

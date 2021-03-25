@@ -46,7 +46,7 @@ table,th,tr,td
 				<th>Total Days</th>
 				<th>Reason</th>
 			</tr>
-			<core:forEach var="LD" items="${listOfLeaveData}">
+			<c:forEach var="LD" items="${listOfLeaveData}">
 				<tr>
 					<td>${LD.employeeId}</td>
 					<td>${LD.leaveType}</td>
@@ -55,7 +55,7 @@ table,th,tr,td
 					<td>${LD.totalDays}</td>
 					<td>${LD.reason}</td>
 				</tr>
-			</core:forEach>
+			</c:forEach>
 		</table>
 	</div>
 </body>

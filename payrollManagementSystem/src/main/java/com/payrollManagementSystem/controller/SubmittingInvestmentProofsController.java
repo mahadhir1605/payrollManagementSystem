@@ -101,12 +101,13 @@ public class SubmittingInvestmentProofsController {
 	}
 
 	@ExceptionHandler(DuplicateSubmissionException.class)
-	public ModelAndView submissionExceptionHandling(DuplicateSubmissionException e) {
+	public ModelAndView submissionExceptionHandling(@CookieValue(name = "userId", defaultValue = "0") long userId ,DuplicateSubmissionException e) {
 		String[] financialYears = { "2020-21", "2021-22", "2022-23", "2023-24", "2024-25" };
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("financialYears", financialYears);
 		modelAndView.addObject("investmentProofs", new InvestmentProofs());
 		// modelAndView.addObject("multipartEntity", new MultipartEntity());
+		modelAndView.addObject("employee", employeeService.getEmployee(userId));
 		modelAndView.addObject("UploadErrorMsg", e.getMessage());
 		modelAndView.setViewName("application/investmentProofViews/uploadingPage");
 
