@@ -8,9 +8,8 @@
 
 	<div class="topnav" id="myTopnav">
 		<a href="home" class="active">Home</a>
-		<a href="viewPayslip">View my Payslip</a>                        
-		<a href="updateSelfDetails">Update my details</a>                
-	    <a href="generatePayroll">Generate payroll for Employees</a>     
-	    <a href="addAccountantUser">Add Accountant</a>                   
-	    <a href="viewAllEmployees">View or edit users list</a> <a></a>   
+		<a href="updateSelfDetails">Update my details</a>
+	    <a href="generatePayroll">Generate payroll for Employees</a>
+	    <a href="addAccountantUser">Add Accountant</a>
+	    <a href="viewAllAccountants">View or edit Accountants list</a> <a></a>   
 	</div>
