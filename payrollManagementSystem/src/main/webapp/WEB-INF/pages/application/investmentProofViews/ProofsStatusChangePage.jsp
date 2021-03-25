@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,32 +14,16 @@
 
 </head>
 <body>
-	<div>
-		<h2 style="text-align: center;">Employee Portal</h2>
-	</div>
-	<div style="padding-right: 3%;">
-		<p align="right">Logged in as ${employee.employeeName }</p>
-		<p align="right"><a href="logout">Logout</a>
-	</div>
-
-	<div class="topnav" id="myTopnav">
-		<a href="<%= request.getContextPath() %>/home" class="active">Home</a>
-		<a href="<%= request.getContextPath() %>/viewPayslip">View my Payslip</a>        
-		<a href="<%= request.getContextPath() %>/leaveFormPage">Apply for leave</a>      
-			<a href="<%= request.getContextPath() %>/viewLeaveHistory">View Leave History</a>    
-		<a href="<%= request.getContextPath() %>/updateSelfDetails">Update my details</a>  
-				<a href="<%= request.getContextPath() %>/uploadFiles">Investment Proofs</a>
-		          
-	    <a href="<%= request.getContextPath() %>/getDetails">Generate payslip for Employees</a> 
-	    <a href="<%= request.getContextPath() %>/addEmployee">Add an employee</a>                    
-	    <a href="<%= request.getContextPath() %>/updateEmployeeDetails">Update Employee Profile</a>  
-	    <a href="<%= request.getContextPath() %>/viewAllEmployees">View Employee list</a>            
-	    <a href="<%= request.getContextPath() %>/getDetailsToverifyInvestmentProofs">Investment proof Approval</a>
-	    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-			<i class="fa fa-bars"></i>
-		</a>
-	</div>
-
+<c:if test="${employee.usertype eq 'Employee' }">
+		<jsp:include page="../../templates/headerEmployee.jsp"></jsp:include>
+	</c:if>
+		<c:if test="${employee.usertype eq 'Accountant' }">
+		<jsp:include page="../../templates/headerAccountant.jsp"></jsp:include>
+	</c:if>
+	
+		<c:if test="${employee.usertype eq 'Administrator' }">
+		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
+	</c:if>
 <h3 style="padding-left: 3%; padding-right: 3%" >${StatusChangeMsg}</h3>
 </body>
 </html>

@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,26 +16,17 @@
 
 </head>
 <body>
-	<div>
-		<h2 style="text-align: center;">Employee Portal</h2>
-	</div>
-	<div style="padding-right: 3%;">
-		<p align="right">Logged in as ${employee.employeeName }</p>
-		<p align="right">
-			<a href="logout">Logout</a>
-	</div>
-
-	<div class="topnav" id="myTopnav">
-		<a href="home" class="active">Home</a>
-		<a href="viewPayslip">View my Payslip</a>
-		<a href="leaveFormPage">Apply for leave</a>
-			<a href="viewLeaveHistory">View Leave History</a>
-		
-		<a href="updateSelfDetails">Update my details</a>
-		<a href="submitInvestmentProofs">Investment Proofs</a>
-		<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-		<i class="fa fa-bars"></i></a>
-	</div>
+	<c:if test="${employee.usertype eq 'Employee' }">
+		<jsp:include page="../../templates/headerEmployee.jsp"></jsp:include>
+	</c:if>
+		<c:if test="${employee.usertype eq 'Accountant' }">
+		<jsp:include page="../../templates/headerAccountant.jsp"></jsp:include>
+	</c:if>
+	
+		<c:if test="${employee.usertype eq 'Administrator' }">
+		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
+	</c:if>
+	
 	<div style="padding-left: 3%; padding-top: 3%; ">
 	<h3>View payslip</h3>
 		<form:form modelAttribute="dataTransferEntity" action="viewPayslip"
