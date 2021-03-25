@@ -25,9 +25,9 @@ public class MailerService {
 	 *         0 - If mail operation fails
 	 */
 	public static int generateOTP(String to, int OTP) {
-		final String from = "mahadhirmohammed38@gmail.com";
+		final String from = "***add your email ID here***";
 		// FIXME REDACT password variable value
-		final String password = "qnqovhtuhfmlaflu";
+		final String password = "***add your Google App password here***";
 
 		String subject = "Forgot Password";
 		String msg = "Your One Time Password is " + OTP;
