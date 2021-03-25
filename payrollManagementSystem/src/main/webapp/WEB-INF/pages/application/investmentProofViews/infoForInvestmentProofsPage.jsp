@@ -30,7 +30,6 @@
 				<a href="uploadFiles">Investment Proofs</a> 
 		     
 	    <a href="getDetails">Generate payslip for Employees</a> 
-	    <a href="generateReport">Generate organization report</a>    
 	    <a href="addEmployee">Add an employee</a>                    
 	    <a href="updateEmployeeDetails">Update Employee Profile</a>  
 	    <a href="viewAllEmployees">View Employee list</a>            

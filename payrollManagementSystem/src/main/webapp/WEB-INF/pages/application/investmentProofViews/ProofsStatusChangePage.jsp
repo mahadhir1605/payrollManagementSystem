@@ -29,7 +29,6 @@
 				<a href="<%= request.getContextPath() %>/uploadFiles">Investment Proofs</a>
 		          
 	    <a href="<%= request.getContextPath() %>/getDetails">Generate payslip for Employees</a> 
-	    <a href="<%= request.getContextPath() %>/generateReport">Generate organization report</a>    
 	    <a href="<%= request.getContextPath() %>/addEmployee">Add an employee</a>                    
 	    <a href="<%= request.getContextPath() %>/updateEmployeeDetails">Update Employee Profile</a>  
 	    <a href="<%= request.getContextPath() %>/viewAllEmployees">View Employee list</a>            
