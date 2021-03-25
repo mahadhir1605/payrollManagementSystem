@@ -2,6 +2,7 @@ package com.payrollManagementSystem.controller;
 
 import java.time.Month;
 
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -54,7 +55,7 @@ public class PaySlipGenerationController {
 
 	@RequestMapping(value = "/confirmationPage", method = RequestMethod.POST)
 	public ModelAndView confirmation(@Valid DataTransferEntity dataTransferEntity, BindingResult result,
-			@CookieValue(name = "userId", defaultValue = "0") int userId, HttpServletResponse response)
+			@CookieValue(name = "userId", defaultValue = "0") int userId, HttpServletResponse response, HttpSession session)
 			throws EmployeeNotFoundException, DuplicateRecordException, NoAttendanceException {
 		ModelAndView modelAndView = new ModelAndView();
 
@@ -78,15 +79,16 @@ public class PaySlipGenerationController {
 
 		PaySlipEntity paySlip = paySlipService.makePaySlip(dataTransferEntity.getEmployeeId(),
 				dataTransferEntity.getMonth(), dataTransferEntity.getYear());
-		modelAndView.addObject("paySlip", paySlip);
-		modelAndView.addObject("paySlip2", new PaySlipEntity());
+		session.setAttribute("paySlip", paySlip);
+		//modelAndView.addObject("paySlip", paySlip);
+		//modelAndView.addObject("paySlip2", new PaySlipEntity());
 		modelAndView.addObject("employee", employeeService.getEmployee(userId));
 		modelAndView.setViewName("application/generatePayslipViews/confirmationPage");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/generationCompletionPage")
-	public ModelAndView showCompletionMsg(PaySlipEntity paySlip2,
+	public ModelAndView showCompletionMsg(HttpSession session, 
 			@CookieValue(name = "userId", defaultValue = "0") int userId, HttpServletResponse response) {
 		ModelAndView modelAndView = new ModelAndView();
 		// URL bypass check
@@ -98,7 +100,9 @@ public class PaySlipGenerationController {
 
 			return modelAndView;
 		}
-		paySlipService.generatePaySlip(paySlip2);
+		PaySlipEntity paySlip = (PaySlipEntity) session.getAttribute("paySlip");
+		session.removeAttribute("paySlip");
+		paySlipService.generatePaySlip(paySlip);
 		modelAndView.addObject("completionMsg", "PaySlip is generated.");
 		modelAndView.addObject("employee", employeeService.getEmployee(userId));
 		modelAndView.setViewName("application/generatePayslipViews/completionPage");
