@@ -8,13 +8,13 @@
 	</div>
 
 	<div class="topnav" id="myTopnav">
-		<a href="home" class="active">Home</a>
-		<a href="viewPayslip">View my Payslip</a>
-		<a href="leaveFormPage">Apply for leave</a>
-			<a href="viewLeaveHistory">View Leave History</a>
+		<a href="<%= request.getContextPath() %>/home" class="active">Home</a>
+		<a href="<%= request.getContextPath() %>/viewPayslip">View my Payslip</a>
+		<a href="<%= request.getContextPath() %>/leaveFormPage">Apply for leave</a>
+			<a href="<%= request.getContextPath() %>/viewLeaveHistory">View Leave History</a>
 		
-		<a href="updateSelfDetails">Update my details</a>
-		<a href="uploadFiles">Investment Proofs</a>
+		<a href="<%= request.getContextPath() %>/updateSelfDetails">Update my details</a>
+		<a href="<%= request.getContextPath() %>/uploadFiles">Investment Proofs</a>
 		<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 		<i class="fa fa-bars"></i></a>
 	</div>

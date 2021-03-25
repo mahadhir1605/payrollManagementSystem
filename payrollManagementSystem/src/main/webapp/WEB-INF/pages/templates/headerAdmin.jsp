@@ -7,9 +7,9 @@
 	</div>
 
 	<div class="topnav" id="myTopnav">
-		<a href="home" class="active">Home</a>
-		<a href="updateSelfDetails">Update my details</a>
-	    <a href="generatePayroll">Generate payroll for Employees</a>
-	    <a href="addAccountantUser">Add Accountant</a>
-	    <a href="viewAllAccountants">View or edit Accountants list</a> <a></a>   
+		<a href="<%= request.getContextPath() %>/home" class="active">Home</a>
+		<a href="<%= request.getContextPath() %>/updateSelfDetails">Update my details</a>
+	    <a href="<%= request.getContextPath() %>/generatePayroll">Generate payroll for Employees</a>
+	    <a href="<%= request.getContextPath() %>/addAccountantUser">Add Accountant</a>
+	    <a href="<%= request.getContextPath() %>/viewAllAccountants">View or edit Accountants list</a> <a></a>   
 	</div>
