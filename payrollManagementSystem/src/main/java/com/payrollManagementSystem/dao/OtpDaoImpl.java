@@ -24,7 +24,7 @@ public class OtpDaoImpl implements OtpDao {
 //		sessionFactory.getCurrentSession().saveOrUpdate(otp);
 	}
 
-	public Otp getMappedOtp(int employeeId) {
+	public Otp getMappedOtp(long employeeId) {
 		System.out.println("inside getMappedOtp()");
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

@@ -18,7 +18,7 @@ public class OtpServiceImpl implements OtpService {
 		otpDao.addOtpEntry(otpObject);
 	}
 
-	public Otp getMappedOtp(int employeeId) {
+	public Otp getMappedOtp(long employeeId) {
 		return otpDao.getMappedOtp(employeeId);
 	}
 

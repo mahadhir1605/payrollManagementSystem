@@ -1,6 +1,7 @@
 package com.payrollManagementSystem.controller;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.payrollManagementSystem.entity.Employee;
 import com.payrollManagementSystem.service.EmployeeService;
@@ -28,36 +30,27 @@ public class UpdateSelfController {
 	private EmployeeService employeeService;
 
 	@RequestMapping(value = "/updateSelfDetails")
-	public String updateSelfDetails(Model model, @CookieValue(name = "userId", defaultValue = "0") int userId,
-			HttpServletResponse response) {
-		// URL bypass check
-		if (userId == 0) {
-			model.addAttribute("status", "Session invalid or expired");
-			model.addAttribute("statusMessage",
-					"You are trying an invalid request or your current session has expired. Please log in again");
+	public String updateSelfDetails(Model model,HttpSession session) {
+		Employee employee = (Employee) session.getAttribute("employee");
+		if(null == employee) {
 			return "statusPage";
 		}
-		Employee currentEmployee = employeeService.getEmployee(userId);
-		model.addAttribute("employee", currentEmployee);
+		model.addAttribute("employee", employee);
 		return "application/updateSelfDetails";
 	}
 
 	@RequestMapping(value = "/updateSelfDetails", method = RequestMethod.POST)
-	public String saveSelfDetails(@Validated @ModelAttribute("employee") Employee employee, BindingResult result,
-			@CookieValue(name = "userId", defaultValue = "0") int userId, HttpServletResponse response, Model model) {
-		// URL bypass check
-		if (userId == 0) {
-			model.addAttribute("status", "Session invalid or expired");
-			model.addAttribute("statusMessage",
-					"You are trying an invalid request or your current session has expired. Please log in again");
+	public String saveSelfDetails(@Validated @ModelAttribute("employee") Employee emp, BindingResult result,
+			HttpSession session, Model model) {
+		Employee employee = (Employee) session.getAttribute("employee");
+		if(null == employee) {
 			return "statusPage";
 		}
 		if (result.hasErrors()) {
-			System.out.println(employee + "\n" + result.getAllErrors());
-			model.addAttribute("employee", employee);
+			model.addAttribute("employee", emp);
 			return "application/updateSelfDetails";
 		}
-		employeeService.updateEmployee(employee);
+		employeeService.updateEmployee(emp);
 		return "redirect:/home";
 	}
 }

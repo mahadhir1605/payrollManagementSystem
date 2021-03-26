@@ -10,11 +10,11 @@ import javax.persistence.Table;
 public class Otp {
 	@Column
 	@Id
-	int employeeId;
+	long employeeId;
 	@Column
 	int otp;
 
-	public int getEmployeeId() {
+	public long getEmployeeId() {
 		return employeeId;
 	}
 
@@ -30,9 +30,9 @@ public class Otp {
 		this.otp = otp;
 	}
 
-	public Otp(int employeeId, int otp) {
+	public Otp(long l, int otp) {
 		super();
-		this.employeeId = employeeId;
+		this.employeeId = l;
 		this.otp = otp;
 	}
 
@@ -40,7 +40,7 @@ public class Otp {
 
 	}
 
-	public Otp(int employeeId) {
+	public Otp(long employeeId) {
 		super();
 		this.employeeId = employeeId;
 	}

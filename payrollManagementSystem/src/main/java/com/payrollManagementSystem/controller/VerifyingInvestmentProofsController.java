@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.payrollManagementSystem.entity.Employee;
 import com.payrollManagementSystem.entity.InvestmentProofs;
 import com.payrollManagementSystem.entity.VerificationDetailsEntity;
 import com.payrollManagementSystem.exceptions.DuplicateApprovalException;
@@ -38,20 +39,15 @@ public class VerifyingInvestmentProofsController {
 	EmployeeService employeeService;
 	
 	@RequestMapping(value="/getDetailsToverifyInvestmentProofs")
-	public ModelAndView getInvestmentProofsDetails(@CookieValue(name = "userId", defaultValue = "0") long userId)
+	public ModelAndView getInvestmentProofsDetails(HttpSession session)
 	{
 		ModelAndView modelAndView = new ModelAndView();
 
-		// URL bypass check
-		if (userId == 0) {
-			modelAndView.addObject("status", "Session invalid or expired");
-			modelAndView.addObject("statusMessage",
-					"You are trying an invalid request or your current session has expired. Please log in again");
-			modelAndView.setViewName("statusPage");
-			return modelAndView;
+		Employee employee = (Employee) session.getAttribute("employee");
+		if(null == employee) {
+			return new ModelAndView("statusPage");
 		}
 
-		modelAndView.addObject("employee", employeeService.getEmployee(userId));
 		String[] financialYears= {"2020-21", "2021-22", "2022-23", "2023-24", "2024-25"};
 		modelAndView.addObject("financialYears", financialYears);
 		modelAndView.addObject("verificationDetailsEntity", new VerificationDetailsEntity());
@@ -60,21 +56,15 @@ public class VerifyingInvestmentProofsController {
 	}
 	
 	@RequestMapping(value="/detailsToBeVerified", method = RequestMethod.POST) // POST
-	public ModelAndView showInvestmentDetails(@CookieValue(name = "userId", defaultValue = "0") long userId,@Valid VerificationDetailsEntity verificationDetailsEntity, BindingResult result, HttpSession session) 
+	public ModelAndView showInvestmentDetails(@Valid VerificationDetailsEntity verificationDetailsEntity, BindingResult result, HttpSession session) 
 			throws IOException, DuplicateApprovalException, NoRecordFoundException, RejectedRecordException
 	{
 		ModelAndView modelAndView = new ModelAndView();
 
-		// URL bypass check
-		if (userId == 0) {
-			modelAndView.addObject("status", "Session invalid or expired");
-			modelAndView.addObject("statusMessage",
-					"You are trying an invalid request or your current session has expired. Please log in again");
-			modelAndView.setViewName("statusPage");
-			return modelAndView;
+		Employee employee = (Employee) session.getAttribute("employee");
+		if(null == employee) {
+			return new ModelAndView("statusPage");
 		}
-		modelAndView.addObject("employee", employeeService.getEmployee(userId));
-
 
 		if(result.hasErrors())
 		{
@@ -84,13 +74,10 @@ public class VerifyingInvestmentProofsController {
 			modelAndView.setViewName("application/investmentProofViews/infoForInvestmentProofsPage");
 			return modelAndView;
 		}
+		
 		InvestmentProofs investmentProofs = investmentProofsService.getInvestmentProofsDetailsForVerification(verificationDetailsEntity);
-		
-		
 		String fileName = verificationDetailsEntity.getEmployeeId() + "_proof1.pdf";
 		String path = session.getServletContext().getRealPath("/") +"/PDFs/";
-		System.err.println(fileName);
-		System.err.println(path);
 		File file = new File(path + fileName);
 		FileOutputStream fos = new FileOutputStream(file);
 		fos.write(investmentProofs.getHouseRentAllowanceFileBytes());
@@ -235,20 +222,13 @@ public class VerifyingInvestmentProofsController {
 //	}
 	
 	@RequestMapping(value="investmentProofsStatus/{status}")
-	public ModelAndView investmentProofsApproving(@CookieValue(name = "userId", defaultValue = "0") long userId, @PathVariable String status, VerificationDetailsEntity verificationDetailsEntity)
+	public ModelAndView investmentProofsApproving(@PathVariable String status, VerificationDetailsEntity verificationDetailsEntity, HttpSession session)
 	{
 		ModelAndView modelAndView = new ModelAndView();
-
-		// URL bypass check
-		if (userId == 0) {
-			modelAndView.addObject("status", "Session invalid or expired");
-			modelAndView.addObject("statusMessage",
-					"You are trying an invalid request or your current session has expired. Please log in again");
-			modelAndView.setViewName("statusPage");
-			return modelAndView;
+		Employee employee = (Employee) session.getAttribute("employee");
+		if(null == employee) {
+			return new ModelAndView("statusPage");
 		}
-		modelAndView.addObject("employee", employeeService.getEmployee(userId));
-
 		if(status.equals("APPROVED"))
 		{
 			investmentProofsService.approveInvestmentProofs(verificationDetailsEntity);
@@ -265,11 +245,10 @@ public class VerifyingInvestmentProofsController {
 	}
 	
 	@ExceptionHandler({DuplicateApprovalException.class, NoRecordFoundException.class, RejectedRecordException.class})
-	public ModelAndView exceptionHandling(@CookieValue(name = "userId", defaultValue = "0") long userId ,Exception e)
+	public ModelAndView exceptionHandling(Exception e)
 	{	e.printStackTrace();
 		String[] financialYears= {"2020-21", "2021-22", "2022-23", "2023-24", "2024-25"};
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("employee", employeeService.getEmployee(userId));
 		modelAndView.addObject("financialYears", financialYears);
 		modelAndView.addObject("verificationDetailsEntity", new VerificationDetailsEntity());
 		modelAndView.addObject("ExceptionMsg", e.getMessage());
@@ -278,13 +257,12 @@ public class VerifyingInvestmentProofsController {
 	}
 	
 	@ExceptionHandler(IOException.class)
-	public ModelAndView IOExceptionHandling(@CookieValue(name = "userId", defaultValue = "0") long userId, IOException e)
+	public ModelAndView IOExceptionHandling(IOException e)
 	{	e.printStackTrace();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("ErrorMsg", "We have encountered an error in "
 				+ "getting the files. Please try again after some time.");
 		modelAndView.setViewName("application/investmentProofViews/IOExceptionPage");
-		modelAndView.addObject("employee", employeeService.getEmployee(userId));
 		return modelAndView;
 	}
 	
