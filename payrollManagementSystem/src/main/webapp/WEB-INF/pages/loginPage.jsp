@@ -21,8 +21,8 @@
 			<table>
 				<tr>
 					<td><form:label path="employeeId">Employee ID :</form:label></td>
-					<td><form:input pattern="[0-9]{7}" title="Must be 7 digits"
-							path="employeeId" placeholder=" "></form:input></td>
+					<td><form:input type="number" pattern="[0-9]{7}" title="Must be 7 digits"
+							path="employeeId"	></form:input></td>
 					<td><form:errors path="employeeId"></form:errors></td>
 				</tr>
 				<tr>

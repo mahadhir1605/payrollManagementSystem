@@ -3,7 +3,7 @@
 	</div>
 	<div style="padding-right: 3%;">
 		<p align="right">Logged in as ${employee.employeeName }</p>
-		<p align="right"><a href="logout">Logout</a>
+		<p align="right"><a href="<%= request.getContextPath() %>/logout">Logout</a>
 	</div>
 
 	<div class="topnav" id="myTopnav">
