@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Earned Leave Exception Page</title>
+<title>Exception</title>
 </head>
 <body>
 <h2>${errorMsg}</h2>

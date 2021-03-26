@@ -27,33 +27,33 @@
 	</c:if>
 
 
-
+<div style="padding: 3%;">
 <h3>Please enter the details to generate the PaySlip.</h3>
 
 <taglib:form modelAttribute="dataTransferEntity" action="confirmationPage" method="post">
 <table>
 	<tr>
 	<td>
-		<taglib:label path="employeeId">Employee Id</taglib:label>
-		<taglib:input path="employeeId" type="number"/>
-		<taglib:errors path="employeeId"/>
+		<taglib:label path="employeeId">Employee Id</taglib:label></td><td>
+		<taglib:input path="employeeId" type="number"/></td><td>
+		<taglib:errors path="employeeId"/></td><td>
 		${EmployeeErrorMsg}
 	</td>
 	</tr>
 	<tr>
 	<td>
-		<taglib:label path="month">Month</taglib:label>
-		<taglib:select path="month" items="${months}"></taglib:select>
+		<taglib:label path="month">Month</taglib:label></td><td>
+		<taglib:select path="month" items="${months}"></taglib:select></td><td>
 	</td>
 	</tr>
 	<tr>
 	<td>
-		<taglib:label path="year">Year</taglib:label>
-		<taglib:input path="year" type="number" id="yearId" oninput="yearFun()"/>
-		<taglib:errors path="year"/>
+		<taglib:label path="year">Year</taglib:label></td><td>
+		<taglib:input path="year" type="number" id="yearId" oninput="yearFun()"/></td><td>
+		<taglib:errors path="year"/></td><td>
 		${DuplicateRecordErrorMsg}
 		${AttendanceErrorMsg}
-	</td>
+	</td><td></td>
 	<td id="yearValidationMsg">
 		
 	</td>
@@ -65,6 +65,6 @@
 	</tr>
 </table>
 </taglib:form>
-
+</div>
 </body>
 </html>
