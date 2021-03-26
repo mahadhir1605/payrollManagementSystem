@@ -14,7 +14,7 @@ public class Otp {
 	@Column
 	int otp;
 
-	public long getEmployeeId() {
+	public int getEmployeeId() {
 		return employeeId;
 	}
 
@@ -30,9 +30,9 @@ public class Otp {
 		this.otp = otp;
 	}
 
-	public Otp(long l, int otp) {
+	public Otp(int employeeId, int otp) {
 		super();
-		this.employeeId = (int)l;
+		this.employeeId = employeeId;
 		this.otp = otp;
 	}
 
@@ -40,9 +40,9 @@ public class Otp {
 
 	}
 
-	public Otp(long employeeId) {
+	public Otp(int employeeId) {
 		super();
-		this.employeeId = (int)employeeId;
+		this.employeeId = employeeId;
 	}
 
 }

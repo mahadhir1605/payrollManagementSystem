@@ -38,14 +38,14 @@ public class ForgotPasswordControler {
 
 		Employee employee = employeeService.getEmployee(login.getEmployeeId());
 		if (null != employee) {
-			Otp otp = new Otp(login.getEmployeeId(), new Random().nextInt(8999) + 1000);
+			Otp otp = new Otp((int)login.getEmployeeId(), new Random().nextInt(8999) + 1000);
 			otpService.addOtpEntry(otp); // to generate and store otp in database
 			if (MailerService.generateOTP(employee.getEmailId(), otp.getOtp()) == 1) { // check mail status
 				System.out.println("Mail sent to " + employee.getEmailId());
 			} else {
 				System.err.println("ERROR : Mail not sent");
 			}
-			model.addAttribute("Otp", new Otp(employee.getEmployeeId()));
+			model.addAttribute("Otp", new Otp((int)employee.getEmployeeId()));
 			return "forgotPasswordFlow";
 		}
 		model.addAttribute("status", "Error");
@@ -72,7 +72,7 @@ public class ForgotPasswordControler {
 			return "changePasswordPage";
 		}
 		employeeService.updatePassword(employee);
-		session.setAttribute("employee", employee);
+		session.setAttribute("employee", employeeService.getEmployee(employee.getEmployeeId()));
 			return "redirect:/home";
 	}
 }

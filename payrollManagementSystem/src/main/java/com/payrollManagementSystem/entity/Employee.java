@@ -53,7 +53,7 @@ public class Employee {
 	@JoinColumn(name = "emp_id")
 	private EmployeeCtc employeeCtc;
 
-	public Long getEmployeeId() {
+	public long getEmployeeId() {
 		return employeeId;
 	}
 

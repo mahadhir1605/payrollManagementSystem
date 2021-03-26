@@ -29,7 +29,7 @@ public class OtpDaoImpl implements OtpDao {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 //		Otp otp = session.load(Otp.class, employeeId);
-		Otp otp = session.get(Otp.class, employeeId);
+		Otp otp = session.get(Otp.class, (int)employeeId);
 		session.close();
 //		Otp otp = sessionFactory.getCurrentSession().load(Otp.class, employeeId);
 		return otp;
