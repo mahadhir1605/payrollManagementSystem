@@ -74,6 +74,7 @@ function proof5Fun()
 		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
 	</c:if>
 		<div style="padding: 3%">
+		<h2>Investment proofs submission</h2>
 		<taglib:form modelAttribute="investmentProofs"
 			encType="multipart/form-data" action="uploadSuccess">
 			<table>

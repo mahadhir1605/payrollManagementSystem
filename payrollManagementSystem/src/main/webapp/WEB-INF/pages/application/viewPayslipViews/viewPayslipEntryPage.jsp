@@ -28,7 +28,7 @@
 	</c:if>
 	
 	<div style="padding-left: 3%; padding-top: 3%; ">
-	<h3>View payslip</h3>
+	<h2>View payslip</h2>
 		<form:form modelAttribute="dataTransferEntity" action="viewPayslip"
 			method="post">
 			<table>

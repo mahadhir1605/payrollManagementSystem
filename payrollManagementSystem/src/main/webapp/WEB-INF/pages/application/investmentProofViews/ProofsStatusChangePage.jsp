@@ -24,6 +24,6 @@
 		<c:if test="${employee.usertype eq 'Administrator' }">
 		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
 	</c:if>
-<h3 style="padding-left: 3%; padding-right: 3%" >${StatusChangeMsg}</h3>
+<h2 style="padding-left: 3%; padding-right: 3%" >${StatusChangeMsg}</h2>
 </body>
 </html>

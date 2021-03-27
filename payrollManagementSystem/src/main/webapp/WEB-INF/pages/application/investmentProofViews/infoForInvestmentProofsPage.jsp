@@ -27,6 +27,7 @@
 	</c:if>
 	
 		<div style="padding-left: 3%; padding-right: 3%">
+		<h2>Investment proofs verification</h2>
 		<p>${ExceptionMsg}</p>
 		<taglib:form modelAttribute="verificationDetailsEntity"
 			action="detailsToBeVerified">

@@ -24,7 +24,7 @@
 	</c:if>
 	<br/><br/>
 	<div style="padding-left: 3%;">
-		<h3>Update your details</h3>
+		<h2>Update your details</h2>
 
 		<!-- ${pageContext.request.contextPath}/ -->
 		<form:form modelAttribute="employee" method="POST"

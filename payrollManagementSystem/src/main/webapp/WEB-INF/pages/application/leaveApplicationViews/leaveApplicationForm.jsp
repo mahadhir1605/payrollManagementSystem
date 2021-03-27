@@ -78,8 +78,8 @@ function EDfun()
 		<c:if test="${employee.usertype eq 'Administrator' }">
 		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
 	</c:if>
-	<div style="padding-left: 3%; padding-right: 3%">
-		<h2>Leave Application Form</h2>
+	<div style="padding: 3%">
+		<h2>Leave Application</h2>
 		<form:form modelAttribute="leaveData" action="leaveResultPage"
 			method="post">
 

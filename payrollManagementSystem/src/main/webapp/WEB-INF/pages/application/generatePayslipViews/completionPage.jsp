@@ -31,7 +31,7 @@
 	<br>
 	<br>
 	<div style="padding: 3%">
-		<h3>${completionMsg}</h3>
+		<h2>${completionMsg}</h2>
 		<br> <a href="home">Home</a>
 	</div>
 </body>

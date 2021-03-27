@@ -13,7 +13,6 @@
 		<a href="<%= request.getContextPath() %>/updateSelfDetails">Update my details</a>
 	    <a href="<%= request.getContextPath() %>/getDetails">Generate payslip for Employees</a>
 	    <a href="<%= request.getContextPath() %>/addEmployee">Add an employee</a>
-	    <a href="<%= request.getContextPath() %>/updateEmployeeDetails">Update Employee Profile</a>  
 	    <a href="<%= request.getContextPath() %>/viewAllEmployees">View Employee list</a>            
 	    <a href="<%= request.getContextPath() %>/getDetailsToverifyInvestmentProofs">Investment proof Approval</a>
 	    <a href="javascript:void(0);" class="icon" onclick="myFunction()">

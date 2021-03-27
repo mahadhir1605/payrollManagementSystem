@@ -24,7 +24,7 @@
 		<c:if test="${employee.usertype eq 'Administrator' }">
 		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
 	</c:if><br><br>
-<h3 style="text-align:center;">PaySlip for the month ${paySlip.month} ${paySlip.year}</h3>
+<h2 style="text-align:center;">PaySlip for the month ${paySlip.month} ${paySlip.year}</h2>
 	<div style="padding: 3%;">
 		<div>
 			<table style="width: 100%;" class="lightBorderClass">

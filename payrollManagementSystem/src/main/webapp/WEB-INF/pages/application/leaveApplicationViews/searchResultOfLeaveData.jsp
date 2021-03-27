@@ -9,19 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/searchResultOfLeaveData.css">
 <script type="text/javascript" src="<%= request.getContextPath() %>/resources/js/respontiveButton.js"></script>
-
-<style>
-table,th,tr,td 
-{
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-.dClass
-{
-	padding:10px;
-}
-</style>
 
 </head>
 <body>
@@ -36,7 +25,7 @@ table,th,tr,td
 		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
 	</c:if>
 	<div style="padding-left: 2%; padding-right: 2%;">
-		<h3>Your Leave History</h3>
+		<h2>Your Leave History</h2>
 		<table>
 			<tr>
 				<th>Employee ID</th>

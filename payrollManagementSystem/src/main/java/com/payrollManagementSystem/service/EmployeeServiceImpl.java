@@ -53,4 +53,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeDao.updatePassword(employee);
 	}
 
+	@Override
+	public void updateEmployeeAllDetails(Employee employee) {
+		employeeDao.updateEmployeeAllDetails(employee);
+	}
+
+	@Override
+	public List<Employee> getAllAccountants() {
+		return employeeDao.getAllAccountants();
+	}
+
 }
