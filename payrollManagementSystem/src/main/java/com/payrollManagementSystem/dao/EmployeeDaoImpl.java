@@ -57,11 +57,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public void deleteEmployee(long employeeId) {
+		System.err.println("inside deleteEmployee -- \n" + employeeId);
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Employee employee = session.load(Employee.class, employeeId);
+		System.err.println(employee);
 		if (null != employee)
 			session.delete(employee);
+		session.getTransaction().commit();
 		session.close();
 	}
 
@@ -101,16 +104,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		session.close();
 	}
 
-//	@Override
-//	public boolean isEmployeeExists(long employeeId) {
-//		Session session = sessionFactory.openSession();
-//		session.beginTransaction();
-//		Employee employee = session.get(Employee.class, employeeId);
-//		System.out.println(null == employee);
-//		if (null == employee) {
-//			return false;
-//		} else
-//			return true;
-//	}
+	@Override
+	public void updateEmployeeAllDetails(Employee employee) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.update(employee);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+
 
 }

@@ -20,4 +20,6 @@ public interface EmployeeService {
 	Employee updateEmployee(Employee employee);
 
 	void updatePassword(Employee employee);
+	
+	void updateEmployeeAllDetails(Employee employee);
 }

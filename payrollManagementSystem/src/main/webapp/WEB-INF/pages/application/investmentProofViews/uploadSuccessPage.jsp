@@ -11,9 +11,9 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
-	href="<%= request.getContextPath() %>/resources/css/style.css" />
+	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <script type="text/javascript"
-	src="<%= request.getContextPath() %>/resources/js/respontiveButton.js"></script>
+	src="<%=request.getContextPath()%>/resources/js/respontiveButton.js"></script>
 
 </head>
 <body>
@@ -27,7 +27,10 @@
 	<c:if test="${employee.usertype eq 'Administrator' }">
 		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
 	</c:if>
+	<div style="padding: 3%;">
+		<h2>Investment proofs submission</h2>
 
-	<h3 style="padding-left: 3%; padding-right: 3%">${SuccessMessage}</h3>
+		<h3>${SuccessMessage}</h3>
+	</div>
 </body>
 </html>

@@ -28,7 +28,7 @@
 
 
 <div style="padding: 3%;">
-<h3>Please enter the details to generate the PaySlip.</h3>
+<h2>Please enter the details to generate the PaySlip.</h2>
 
 <taglib:form modelAttribute="dataTransferEntity" action="confirmationPage" method="post">
 <table>

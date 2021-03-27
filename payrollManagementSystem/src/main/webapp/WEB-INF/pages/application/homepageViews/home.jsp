@@ -25,8 +25,9 @@
 		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
 	</c:if>
 
-
 	<div style="padding-left: 3%; padding-top: 3%">
+		<h2>Home</h2>
+	
 		Welcome ${employee.usertype } <br> Your ID is ${employee.employeeId }
 
 	</div>

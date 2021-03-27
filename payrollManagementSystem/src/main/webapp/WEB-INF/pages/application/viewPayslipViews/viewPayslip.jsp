@@ -29,8 +29,8 @@
 	</c:if>
 	
 	<div id="payslip" style="padding-left: 2%; padding-right: 2%;">
-		<h3 style="text-align: center;">PaySlip for the month
-			${paySlip.month} ${paySlip.year}</h3>
+		<h2 style="text-align: center;">PaySlip for the month
+			${paySlip.month} ${paySlip.year}</h2>
 		<div>
 			<table style="width: 100%;" class="lightBorderClass">
 				<tr class="lightBorderClass">

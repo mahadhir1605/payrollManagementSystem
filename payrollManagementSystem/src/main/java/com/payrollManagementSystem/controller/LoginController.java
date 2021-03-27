@@ -44,6 +44,9 @@ public class LoginController {
 	public String loginAuthView(@Validated @ModelAttribute("login") Login login, BindingResult result, Model model,
 			HttpSession session) {
 		// First, to check for errors in the form input submitted
+		if (null != (Employee) session.getAttribute("employee")) {
+			return "redirect:/home";
+		}
 		if (result.hasErrors()) {
 			model.addAttribute("login", login);
 			model.addAttribute("userType", userType);

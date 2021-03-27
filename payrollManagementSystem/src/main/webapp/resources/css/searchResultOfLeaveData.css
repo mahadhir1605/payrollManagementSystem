@@ -5,3 +5,7 @@ table,th,tr
 	border: 1px solid black;
 	border-collapse: collapse;
 }
+.dClass
+{
+	padding:10px;
+}
