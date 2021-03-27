@@ -7,8 +7,7 @@ CREATE TABLE `employee_ctc` (
   `food_coupon` double DEFAULT NULL,
   `PF` double DEFAULT NULL,
   PRIMARY KEY (`emp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8079899 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 CREATE TABLE `employee` (
@@ -26,7 +25,7 @@ CREATE TABLE `employee` (
   `usertype` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`emp_id`),
   CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`emp_id`) REFERENCES `employee_ctc` (`emp_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8079899 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `employee_attendance` (
   `RECORD_ID` bigint NOT NULL AUTO_INCREMENT,
@@ -35,7 +34,48 @@ CREATE TABLE `employee_attendance` (
   `year_` int DEFAULT NULL,
   `LOP_days` int DEFAULT NULL,
   PRIMARY KEY (`RECORD_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `employee_available_leaves` (
+  `RECORD_ID` bigint NOT NULL AUTO_INCREMENT,
+  `EMPLOYEE_ID` bigint NOT NULL,
+  `EARNED_LEAVES` int DEFAULT NULL,
+  `SICK_LEAVES` int DEFAULT NULL,
+  `EMERGENCY_LEAVES` int DEFAULT NULL,
+  PRIMARY KEY (`RECORD_ID`),
+  UNIQUE KEY `EMPLOYEE_ID` (`EMPLOYEE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `investment_proofs` (
+  `RECORD_ID` bigint NOT NULL AUTO_INCREMENT,
+  `employee_id` bigint DEFAULT NULL,
+  `financial_year` varchar(200) DEFAULT NULL,
+  `hra_amount` double DEFAULT NULL,
+  `hra_file_bytes` longblob,
+  `childern_tution_fee_amount` double DEFAULT NULL,
+  `childern_tution_fee_file_bytes` longblob,
+  `education_loan_interest_amount` double DEFAULT NULL,
+  `education_loan_interest_file_bytes` longblob,
+  `medical_insurance_amount` double DEFAULT NULL,
+  `medical_insurance_file_bytes` longblob,
+  `mutual_funds_amount` double DEFAULT NULL,
+  `mutual_funds_file_bytes` longblob,
+  `status_` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`RECORD_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `leavedata` (
+  `RECORD_ID` bigint NOT NULL AUTO_INCREMENT,
+  `EMPLOYEE_ID` bigint NOT NULL,
+  `LEAVE_TYPE` varchar(200) DEFAULT NULL,
+  `START_DATE` date DEFAULT NULL,
+  `END_DATE` date DEFAULT NULL,
+  `TOTAL_DAYS` int DEFAULT NULL,
+  `REASON` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`RECORD_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 CREATE TABLE `otptracker` (
   `employeeId` int NOT NULL,
@@ -72,5 +112,5 @@ CREATE TABLE `payslip` (
   `LOP_days` int DEFAULT NULL,
   `net_days_worked` int DEFAULT NULL,
   PRIMARY KEY (`RECORD_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
