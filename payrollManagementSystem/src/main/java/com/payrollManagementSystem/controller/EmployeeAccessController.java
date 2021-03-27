@@ -79,4 +79,66 @@ public class EmployeeAccessController {
 		employeeService.updateEmployeeAllDetails(emp);
 		return "redirect:/viewAllEmployees";
 	}
+	
+	@RequestMapping(value = "/addAccountantUser")
+	public String addAccountantUser(HttpSession session, Model m) {
+		if(null == (Employee) session.getAttribute("employee")) {
+			return "statusPage";
+		}
+		Employee emp = new Employee();
+		emp.setUsertype("Accountant");
+		m.addAttribute("newAccountant", emp);
+		m.addAttribute("gender", Gender.values());
+		return "application/employeeAccessViews/addAccountantForm";
+	}
+	
+	@PostMapping(value = "/addAccountantUser")
+	public String addAccountantSubmission(HttpSession session, @ModelAttribute("newAccountant")Employee employee, Model m) {
+		if(null == (Employee) session.getAttribute("employee")) {
+			return "statusPage";
+		}
+
+		employeeService.addEmployee(employee);
+		m.addAttribute("e", employee);
+		return "application/employeeAccessViews/addAccountantStatus";
+	}
+
+	@RequestMapping(value = "/viewAllAccountants")
+	public String viewAllAccountants(HttpSession session, Model m) {
+		if(null == (Employee) session.getAttribute("employee")) {
+			return "statusPage";
+		}
+		m.addAttribute("employeeList", employeeService.getAllAccountants());
+		return "application/employeeAccessViews/viewAllAccountants";
+	}
+	
+	@RequestMapping(value = "/viewAllAccountants/delete/{employeeId}")
+	public String deleteAccountantbyId(HttpSession session, @PathVariable("employeeId")long employeeId) {
+		if(null == (Employee) session.getAttribute("employee")) {
+			return "statusPage";
+		}
+		employeeService.deleteEmployee(employeeId);
+		return "redirect:/viewAllAccountants";
+	}
+	
+	@RequestMapping(value = "/viewAllAccountants/edit/{employeeId}")
+	public String editAccountantById(HttpSession session, Model m, @PathVariable("employeeId")long employeeId) {
+		if(null == (Employee) session.getAttribute("employee")) {
+			return "statusPage";
+		}
+		
+		m.addAttribute("editAccountant", employeeService.getEmployee(employeeId));
+		m.addAttribute("gender", Gender.values());
+		return "application/employeeAccessViews/editAccountant";
+	}
+	
+	@PostMapping(value = "/viewAllAccountants/edit/{employeeId}")
+	public String editAccountantByIdSubmit(HttpSession session, @ModelAttribute("newAccountant")Employee employee, @PathVariable("employeeId")long employeeId) {
+		if(null == (Employee) session.getAttribute("employee")) {
+			return "statusPage";
+		}
+		
+		employeeService.updateEmployeeAllDetails(employee);
+		return "redirect:/viewAllAccountants";
+	}
 }

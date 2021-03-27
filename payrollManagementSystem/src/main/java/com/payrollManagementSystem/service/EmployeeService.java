@@ -22,4 +22,6 @@ public interface EmployeeService {
 	void updatePassword(Employee employee);
 	
 	void updateEmployeeAllDetails(Employee employee);
+	
+	List<Employee> getAllAccountants();
 }

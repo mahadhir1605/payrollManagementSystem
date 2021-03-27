@@ -19,7 +19,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/respontiveButton.js"></script>
 </head>
-<title>View employee list</title>
+<title>View Accountants list</title>
 </head>
 <body>
 	<c:if test="${employee.usertype eq 'Employee' }">
@@ -33,7 +33,7 @@
 		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
 	</c:if>
 	<div style="padding: 3%;">
-		<h2>View Employees list</h2>
+		<h2>View Accountants list</h2>
 		<div>
 			<table>
 				<tr>
@@ -59,8 +59,8 @@
 						<td>${employee.dateOfJoining}</td>
 						<td>${employee.designation}</td>
 						<td>${employee.department}</td>
-						<td><a href="viewAllEmployees/edit/${employee.employeeId}">Edit</a>
-							<a href="viewAllEmployees/delete/${employee.employeeId}">Delete</a></td>
+						<td><a href="viewAllAccountants/edit/${employee.employeeId}">Edit</a>
+							<a href="viewAllAccountants/delete/${employee.employeeId}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>

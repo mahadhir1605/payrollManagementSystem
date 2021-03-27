@@ -9,7 +9,7 @@
 	<div class="topnav" id="myTopnav">
 		<a href="<%= request.getContextPath() %>/home" class="active">Home</a>
 		<a href="<%= request.getContextPath() %>/updateSelfDetails">Update my details</a>
-	    <a href="<%= request.getContextPath() %>/generatePayroll">Generate payroll for Employees</a>
+	    <a href="<%= request.getContextPath() %>/getDetails">Generate payslip for Employees</a>
 	    <a href="<%= request.getContextPath() %>/addAccountantUser">Add Accountant</a>
 	    <a href="<%= request.getContextPath() %>/viewAllAccountants">View or edit Accountants list</a> <a></a>   
 	</div>

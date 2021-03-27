@@ -50,7 +50,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public List<Employee> getAllEmployees() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		List<Employee> employeeList = session.createQuery("from Employee").list();
+		List<Employee> employeeList = session.createQuery("from Employee e where e.usertype = 'Employee'").list();
 		session.close();
 		return employeeList;
 	}
@@ -111,6 +111,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		session.update(employee);
 		session.getTransaction().commit();
 		session.close();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Employee> getAllAccountants() {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		List<Employee> employeeList = session.createQuery("from Employee e where e.usertype = 'Accountant'").list();
+		session.close();
+		return employeeList;
 	}
 
 

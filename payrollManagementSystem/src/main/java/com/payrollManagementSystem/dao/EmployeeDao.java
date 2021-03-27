@@ -22,6 +22,8 @@ public interface EmployeeDao {
 	void updatePassword(Employee employee);
 	
 	void updateEmployeeAllDetails(Employee employee);
+	
+	List<Employee> getAllAccountants();
 
 //	boolean isEmployeeExists(long employeeId);
 }

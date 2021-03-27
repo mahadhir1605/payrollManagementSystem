@@ -13,13 +13,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/tablestyle.css">
-
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/respontiveButton.js"></script>
 </head>
-<title>View employee list</title>
+<title>Add Accountant</title>
 </head>
 <body>
 	<c:if test="${employee.usertype eq 'Employee' }">
@@ -32,39 +29,54 @@
 	<c:if test="${employee.usertype eq 'Administrator' }">
 		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
 	</c:if>
-	<div style="padding: 3%;">
-		<h2>View Employees list</h2>
-		<div>
-			<table>
-				<tr>
-					<th>Employee ID</th>
-					<th>Name</th>
-					<th>Date of Birth</th>
-					<th>Gender</th>
-					<th>Phone number</th>
-					<th>Email ID</th>
-					<th>Date of Joining</th>
-					<th>Designation</th>
-					<th>Department</th>
-					<th>Options</th>
-				</tr>
-				<c:forEach var="employee" items="${employeeList}">
-					<tr>
-						<td>${employee.employeeId}</td>
-						<td>${employee.employeeName}</td>
-						<td>${employee.dateOfBirth}</td>
-						<td>${employee.gender}</td>
-						<td>${employee.phoneNum}</td>
-						<td>${employee.emailId}</td>
-						<td>${employee.dateOfJoining}</td>
-						<td>${employee.designation}</td>
-						<td>${employee.department}</td>
-						<td><a href="viewAllEmployees/edit/${employee.employeeId}">Edit</a>
-							<a href="viewAllEmployees/delete/${employee.employeeId}">Delete</a></td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-	</div>
+
+	<h2>Accountant added successfully</h2>
+
+	<table>
+		<tr>
+			<td>Employee Id :</td>
+			<td>${e.employeeId}</td>
+		</tr>
+		<tr>
+			<td>Name :</td>
+			<td>${e.employeeName}</td>
+		</tr>
+		<tr>
+			<td>Gender :</td>
+			<td>${e.gender}</td>
+		</tr>
+
+		<tr>
+			<td>Date of Birth :</td>
+			<td>${e.dateOfBirth}</td>
+		</tr>
+		<tr>
+			<td>Phone Number :</td>
+			<td>${e.phoneNum}</td>
+		</tr>
+
+		<tr>
+			<td>Email Id :</td>
+			<td>${e.emailId}</td>
+		</tr>
+
+		<tr>
+			<td>Date of Joining :</td>
+			<td>${e.dateOfJoining}</td>
+		</tr>
+
+		<tr>
+			<td>Designation :</td>
+			<td>${e.designation}</td>
+		</tr>
+
+		<tr>
+			<td>Department :</td>
+			<td>${e.department}</td>
+		</tr>
+
+	</table>
+
+
 </body>
 </html>
