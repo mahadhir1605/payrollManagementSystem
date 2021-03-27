@@ -29,7 +29,7 @@
 	<c:if test="${employee.usertype eq 'Administrator' }">
 		<jsp:include page="../../templates/headerAdmin.jsp"></jsp:include>
 	</c:if>
-
+<div style="padding: 3%;">
 	<h2>Employee added successfully</h2>
 
 	<table>
@@ -79,6 +79,6 @@
 
 	</table>
 
-
+</div>
 </body>
 </html>
