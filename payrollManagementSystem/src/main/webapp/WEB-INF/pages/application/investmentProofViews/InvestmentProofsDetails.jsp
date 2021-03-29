@@ -31,7 +31,7 @@
 	</c:if>
 	<div style="padding-left: 3%; padding-right: 3%">
 		<h2>Investment proofs verification for Employee
-			${investmentProofs.employeeId }</h2>
+			${investmentProofs.employeeid }</h2>
 
 		<table>
 			<tr>
